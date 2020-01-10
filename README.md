@@ -1,4 +1,4 @@
-# spring-boot-graphql
+# GraphQL with Spring Boot Demo
 Repository for spring boot &amp; graphql demo application
 
 ## Select
