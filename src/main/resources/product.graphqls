@@ -1,0 +1,20 @@
+schema {
+ query: Query
+ mutation: Mutation
+}
+
+type Product {
+  id: Long,
+  name: String,
+  category: String
+}
+
+type Query {
+ getProducts: [Product]
+ getProduct(id: Long): Product
+}
+
+type Mutation {
+    createProduct(name: String, category: String): Product!
+    deleteProduct(id: Long): Long
+}
