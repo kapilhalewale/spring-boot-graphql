@@ -1,7 +1,6 @@
 package com.kp.graphql.springbootgraphqlmybatis.webservice;
 
-import com.kp.graphql.springbootgraphqlmybatis.service.ProductService;
-import graphql.ExecutionResult;
+import com.kp.graphql.springbootgraphqlmybatis.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductApi {
 
     @Autowired
-    private ProductService productService;
+    private ProductMapper productMapper;
 
     @PostMapping
     public ResponseEntity<Object> getProducts(@RequestBody String query) {
