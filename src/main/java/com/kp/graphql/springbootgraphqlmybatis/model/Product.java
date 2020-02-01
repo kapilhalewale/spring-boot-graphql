@@ -1,18 +1,16 @@
 package com.kp.graphql.springbootgraphqlmybatis.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
+import java.util.List;
 
 @Data
 @EqualsAndHashCode
-@Entity
 public class Product {
 
-    @Id
-    @Column(name = "ID", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private String category;
+    List<Discount> discounts;
 }

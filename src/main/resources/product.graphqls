@@ -1,20 +1,28 @@
 schema {
- query: Query
- mutation: Mutation
+ query: ProductQuery
+ mutation: ProductMutation
 }
 
 type Product {
   id: Long,
   name: String,
-  category: String
+  category: String,
+  discounts : [Discount]
 }
 
-type Query {
+type Discount {
+  productId: Long,
+  offerName: String
+}
+
+
+type ProductQuery {
  getProducts: [Product]
  getProduct(id: Long): Product
+ getProductByCategory(category: String): [Product]
 }
 
-type Mutation {
+type ProductMutation {
     createProduct(name: String, category: String): Product!
     deleteProduct(id: Long): Long
 }
