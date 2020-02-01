@@ -12,22 +12,23 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
+        //(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ProductTests {
 
     @Autowired
     private ProductMapper productMapper;
 
-    @Test
-    public void getProducts() {
-        List<Product> checkForProducts = productMapper.getProducts();
-        assertTrue(checkForProducts != null && checkForProducts.size() > 0);
-    }
-
-	@Test
-	public void getProduct() {
-		Product checkForProduct = productMapper.getProduct(1);
-		assertTrue(checkForProduct != null);
-	}
+//    @Test
+//    public void getProducts() {
+//        List<Product> checkForProducts = productMapper.getProducts();
+//        assertTrue(checkForProducts != null && checkForProducts.size() > 0);
+//    }
+//
+//	@Test
+//	public void getProduct() {
+//		Product checkForProduct = productMapper.getProduct(1);
+//		assertTrue(checkForProduct != null);
+//	}
 }
