@@ -6,8 +6,15 @@ schema {
 type Product {
   id: Long,
   name: String,
-  category: String
+  category: String,
+  discounts : [Discount]
 }
+
+type Discount {
+  productId: Long,
+  offerName: String
+}
+
 
 type ProductQuery {
  getProducts: [Product]

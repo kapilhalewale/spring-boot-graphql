@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kp.graphql.springbootgraphqlmybatis.mapper.ProductMapper" >
-    <resultMap id="productResultMap" type="com.kp.graphql.springbootgraphqlmybatis.model.Product" >
-        <id column="id" property="id" jdbcType="BIGINT" />
-        <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="category" property="category" jdbcType="VARCHAR" />
+<mapper namespace="com.kp.graphql.springbootgraphqlmybatis.mapper.ProductMapper">
+
+    <resultMap id="productResultMap" type="com.kp.graphql.springbootgraphqlmybatis.model.Product">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="category" property="category" jdbcType="VARCHAR"/>
+        <collection property="discounts" ofType="Discount">
+            <result column="productId" property="productId" jdbcType="BIGINT"/>
+            <result column="offer_name" property="offerName" jdbcType="VARCHAR"/>
+        </collection>
     </resultMap>
 
     <select id="getProducts" resultMap="productResultMap">
-        select id,name,category FROM product
+        SELECT
+        p.id, p.name,
+        p.category,
+        d.offer_name
+        FROM product p
+        LEFT JOIN discount d ON p.id = d.productId
     </select>
     <select id="getProduct" resultMap="productResultMap">
-        SELECT p.id, p.name, p.category
+        SELECT
+        p.id, p.name,
+        p.category,
+        d.offer_name
         FROM product p
-
+        LEFT JOIN discount d ON p.id = d.productId
         WHERE p.id=#{id}
     </select>
 
-    <select id = "getProductByCategory" resultMap = "productResultMap" parameterType = "Product" statementType = "CALLABLE">
+    <select id="getProductByCategory" resultMap="productResultMap" parameterType="Product" statementType="CALLABLE">
         {call CategoryProducts(#{category, jdbcType = VARCHAR, mode = IN})}
     </select>
 </mapper>
