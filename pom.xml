@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.kp.graphql</groupId>
     <artifactId>springboot-graphql-mybatis-v2</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>graphi</version>
     <name>springboot-graphql-mybatis</name>
     <description>Spring boot with GraphQL and Mybatis</description>
 
